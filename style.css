@@ -1,6 +1,7 @@
 body {
-    background-color: #f4f4f9;
-    font-family: Arial, sans-serif;
+    background: #f8f9fa;
+    color: #343a40;
+    font-family: 'Open Sans', sans-serif;
 }
 /* Dark Mode Styles */
 body.dark-mode {
@@ -23,21 +24,73 @@ body.dark-mode .form-control {
 
 .achievement-card {
     border: none;
-    border-radius: 20px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    border-radius: 15px;
+    transition: transform 0.4s, box-shadow 0.4s;
+    /* background: linear-gradient(145deg, #ffffff, #d7e58a); */
+    background: #ffffff;
     box-shadow: 6px 6px 12px #c8c8c8, -6px -6px 12px #ffffff;
 }
 
 .achievement-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+.achievement-card h5 {
+    color: #007bff;
 }
 
 .badge-icon {
     width: 60px;
     height: 60px;
+    transition: transform 0.3s;
     filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+}
+.badge-icon:hover {
+    transform: rotate(10deg) scale(1.1);
+}
+/* Progress Bar Styles */
+.progress {
+    height: 20px;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #28a745, #20c997);
+    transition: width 0.4s ease;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+}
+/* Social Share Buttons */
+.social-share .btn {
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    transition: transform 0.3s;
+}
+
+.social-share .btn:hover {
+    transform: scale(1.05);
+}
+/* Progress Dashboard Styles */
+.progress-dashboard {
+    /* background-color: #f4f6f8; */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.progress-overview h4 {
+    margin-bottom: 15px;
+}
+
+#overall-progress-bar {
+    transition: width 0.6s ease;
+    font-weight: bold;
+    color: #fff;
 }
 
 .card-title {
@@ -59,13 +112,51 @@ body.dark-mode .form-control {
         transform: scale(1);
     }
 }
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
+/* Smooth Opacity Change */
 .achievement-card {
-    animation: fadeIn 0.5s ease;
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeInUp 0.6s ease forwards;
 }
 
 .achievement-card.hidden {
     display: none;
+}
+
+/* Tutorial Overlay */
+.tutorial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.tutorial-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tutorial-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
 }
 
 
