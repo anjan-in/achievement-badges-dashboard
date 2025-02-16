@@ -1,5 +1,5 @@
 body {
-    background: #f8f9fa;
+    background: #f0f0f0;
     color: #343a40;
     font-family: 'Open Sans', sans-serif;
 }
@@ -25,20 +25,25 @@ body.dark-mode .form-control {
 .achievement-card {
     border: none;
     border-radius: 15px;
-    transition: transform 0.4s, box-shadow 0.4s;
+    transition: transform 0.3s, box-shadow 0.3s;
     /* background: linear-gradient(145deg, #ffffff, #d7e58a); */
     background: #ffffff;
     box-shadow: 6px 6px 12px #c8c8c8, -6px -6px 12px #ffffff;
 }
 
 .achievement-card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
 }
 .achievement-card h5 {
     color: #007bff;
 }
-
+/* Button Hover Effects */
+.btn:hover {
+    box-shadow: 0 8px 15px rgba(0, 123, 255, 0.4);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
 .badge-icon {
     width: 60px;
     height: 60px;
@@ -105,11 +110,11 @@ body.dark-mode .form-control {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: scale(0.95);
+        /* transform: scale(0.95); */
     }
     to {
         opacity: 1;
-        transform: scale(1);
+        /* transform: scale(1); */
     }
 }
 @keyframes fadeInUp {
@@ -150,6 +155,7 @@ body.dark-mode .form-control {
 .tutorial-overlay.active {
     opacity: 1;
     visibility: visible;
+    animation: fadeIn 0.8s ease;
 }
 
 .tutorial-content {
@@ -157,7 +163,33 @@ body.dark-mode .form-control {
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+    transform: scale(0.8);
+    transition: transform 0.5s;
 }
+.tutorial-overlay.active .tutorial-content {
+    transform: scale(1);
+}
+
+/* Unlock Animation */
+.unlocked {
+    box-shadow: 0 0 15px rgba(255, 223, 0, 0.8);
+}
+
+.unlock-animation {
+    animation: pulse 1.5s ease infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(255, 223, 0, 0.8);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(255, 223, 0, 1);
+    }
+}
+
 
 
 /* Responsive Grid Adjustments */
