@@ -58,13 +58,30 @@ function generateBadgeCards() {
 // Call the function to display badges on page load
 window.onload = generateBadgeCards;
 
-// Function to Filter Badges by Category
+// Function to Search Badges by Title
+function searchBadges() {
+    const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+    const filteredBadges = badges.filter(badge => 
+        badge.title.toLowerCase().includes(searchTerm)
+    );
+    displayBadges(filteredBadges);
+}
+
+// Enhanced Filtering with Category and Search
 function filterBadges() {
     const category = document.getElementById('category-filter').value;
+    const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+
     let filteredBadges = badges;
 
     if (category !== "All") {
-        filteredBadges = badges.filter(badge => badge.category === category);
+        filteredBadges = filteredBadges.filter(badge => badge.category === category);
+    }
+
+    if (searchTerm) {
+        filteredBadges = filteredBadges.filter(badge => 
+            badge.title.toLowerCase().includes(searchTerm)
+        );
     }
     
     displayBadges(filteredBadges);
@@ -86,7 +103,7 @@ function sortBadges() {
     displayBadges(sortedBadges);
 }
 
-// Function to Display Badges
+// Update Display Function for Animations
 function displayBadges(badgeArray) {
     const badgeGrid = document.getElementById('badge-grid');
     let badgeCards = '';
@@ -108,6 +125,9 @@ function displayBadges(badgeArray) {
     badgeGrid.innerHTML = badgeCards;
 }
 
-// Initialize and Display All Badges on Load
-window.onload = () => displayBadges(badges);
+// Reinitialize Display and Filters on Load
+window.onload = () => {
+    displayBadges(badges);
+    filterBadges();
+}
 

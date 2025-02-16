@@ -17,7 +17,7 @@
 
     <main class="container">
         <div class="row mb-4">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <select class="form-select" id="category-filter" onchange="filterBadges()">
                     <option value="All">All Categories</option>
                     <option value="Open Source">Open Source</option>
@@ -26,13 +26,16 @@
                     <option value="Community">Community</option>
                 </select>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <select class="form-select" id="sort-option" onchange="sortBadges()">
                     <option value="asc">Sort A-Z</option>
                     <option value="desc">Sort Z-A</option>
                 </select>
             </div>
-        </div>        
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="search-bar" placeholder="Search badges..." oninput="searchBadges()">
+            </div>
+        </div>
 
         <div class="row" id="badge-grid">
             <!-- Sample Achievement Card -->
