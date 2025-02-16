@@ -67,3 +67,34 @@ body.dark-mode .form-control {
 .achievement-card.hidden {
     display: none;
 }
+
+
+/* Responsive Grid Adjustments */
+@media (max-width: 768px) {
+    .achievement-card {
+        margin-bottom: 20px;
+    }
+    .badge-icon {
+        width: 60px;
+        height: 60px;
+    }
+    .card-title {
+        font-size: 1.2em;
+    }
+    .card-text {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .badge-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .card-title {
+        font-size: 1em;
+    }
+    .card-text {
+        font-size: 0.8em;
+    }
+}

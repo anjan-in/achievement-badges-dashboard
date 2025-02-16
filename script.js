@@ -30,6 +30,18 @@ const badges = [
         description: "Guided and mentored new developers.",
         icon: "assets/icons/mentor.svg",
         category: "Community"
+    },
+    {
+        title: "Hackathon Winner",
+        description: "Won a global coding hackathon.",
+        icon: "assets/icons/hackathon.svg",
+        category: "Achievement"
+    },
+    {
+        title: "Team Player",
+        description: "Collaborated successfully in team projects.",
+        icon: "assets/icons/team.svg",
+        category: "Collaboration"
     }
 ];
 
