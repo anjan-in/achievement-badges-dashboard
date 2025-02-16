@@ -21,11 +21,11 @@ Check out the live demo: [Live Demo Link](https://anjan-in.github.io/achievement
 ## Installation  
 1. **Clone the repo**:  
     ```sh
-    git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+    git clone https://github.com/anjan-in/achievement-badges-dashboard.git
     ```
 2. **Navigate to the project directory**:  
     ```sh
-    cd YOUR_REPO
+    cd achievement-badges-dashboard
     ```
 3. **Open `index.html` in your browser**.  
 
