@@ -16,6 +16,24 @@
     </header>
 
     <main class="container">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <select class="form-select" id="category-filter" onchange="filterBadges()">
+                    <option value="All">All Categories</option>
+                    <option value="Open Source">Open Source</option>
+                    <option value="Learning">Learning</option>
+                    <option value="Recognition">Recognition</option>
+                    <option value="Community">Community</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <select class="form-select" id="sort-option" onchange="sortBadges()">
+                    <option value="asc">Sort A-Z</option>
+                    <option value="desc">Sort Z-A</option>
+                </select>
+            </div>
+        </div>        
+
         <div class="row" id="badge-grid">
             <!-- Sample Achievement Card -->
             <!-- <div class="col-md-4 mb-4">
