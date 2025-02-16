@@ -2,6 +2,24 @@ body {
     background-color: #f4f4f9;
     font-family: Arial, sans-serif;
 }
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .card {
+    background-color: #1e1e1e;
+    border: none;
+    color: #cfcfcf;
+}
+
+body.dark-mode .form-select,
+body.dark-mode .form-control {
+    background-color: #2c2c2c;
+    color: #cfcfcf;
+    border: none;
+}
 
 .achievement-card {
     border: none;
@@ -13,7 +31,7 @@ body {
 
 .achievement-card:hover {
     transform: scale(1.05);
-    box-shadow: 12px 12px 24px #c8c8c8, -12px -12px 24px #ffffff;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .badge-icon {
@@ -44,7 +62,6 @@ body {
 
 .achievement-card {
     animation: fadeIn 0.5s ease;
-    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .achievement-card.hidden {

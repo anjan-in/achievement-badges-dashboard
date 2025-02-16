@@ -125,9 +125,27 @@ function displayBadges(badgeArray) {
     badgeGrid.innerHTML = badgeCards;
 }
 
-// Reinitialize Display and Filters on Load
+// Dark Mode Toggle
+function toggleDarkMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+
+    // Save mode in local storage
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+// Load saved theme on page load
 window.onload = () => {
     displayBadges(badges);
     filterBadges();
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('dark-mode-toggle').checked = true;
+    }
 }
 
