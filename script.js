@@ -129,59 +129,25 @@ function playSound(soundId) {
     sound.play();
 }
 
+// Play Animation on Achievement Unlock
+function playUnlockAnimation(cardElement) {
+    cardElement.classList.add('unlock-animation');
+    setTimeout(() => {
+        cardElement.classList.remove('unlock-animation');
+    }, 1500);  // Duration of animation
+}
+
 // Update Display Function for Animations
 function displayBadges(badgeArray) {
     const badgeGrid = document.getElementById('badge-grid');
     let badgeCards = '';
 
-    badgeArray.forEach(badge => {
-        // badgeCards += `
-        //     <div class="col-md-4 mb-4">
-        //         <div class="card achievement-card text-center shadow-sm">
-        //             <div class="card-body">
-        //                 <img src="${badge.icon}" alt="${badge.title} Icon" class="badge-icon mb-3">
-        //                 <h5 class="card-title">${badge.title}</h5>
-        //                 <p class="card-text">${badge.description}</p>
-        //                 <div class="progress">
-        //                     <div class="progress-bar" role="progressbar" style="width: ${badge.progress}%;" 
-        //                         aria-valuenow="${badge.progress}" aria-valuemin="0" aria-valuemax="100">
-        //                         ${badge.progress}%
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </div>
-        // `;
-        // badgeCards += `
-        //     <div class="col-md-4 mb-4">
-        //         <div class="card achievement-card text-center shadow-sm">
-        //             <div class="card-body">
-        //                 <img src="${badge.icon}" alt="${badge.title} Icon" class="badge-icon mb-3">
-        //                 <h5 class="card-title">${badge.title}</h5>
-        //                 <p class="card-text">${badge.description}</p>
-        //                 <div class="progress">
-        //                     <div class="progress-bar" role="progressbar" style="width: ${badge.progress}%;" 
-        //                         aria-valuenow="${badge.progress}" aria-valuemin="0" aria-valuemax="100">
-        //                         ${badge.progress}%
-        //                     </div>
-        //                 </div>
-        //                 <div class="social-share mt-3">
-        //                     <a href="https://twitter.com/intent/tweet?text=I unlocked the '${badge.title}' badge for ${badge.description}! Check it out!&url=https://<your-username>.github.io/<repo-name>/" 
-        //                         target="_blank" class="btn btn-primary btn-sm">
-        //                         Share on Twitter
-        //                     </a>
-        //                     <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://<your-username>.github.io/<repo-name>/&summary=I achieved the '${badge.title}' badge! ${badge.description}" 
-        //                         target="_blank" class="btn btn-info btn-sm">
-        //                         Share on LinkedIn
-        //                     </a>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </div>
-        // `;
+    badgeArray.forEach((badge, index) => {
+        const isUnlocked = badge.progress === 100;
+        
         badgeCards += `
             <div class="col-md-4 mb-4">
-                <div class="card achievement-card text-center shadow-sm">
+                <div class="card achievement-card text-center shadow-sm ${isUnlocked ? 'unlocked' : ''}" id="card-${index}">
                     <div class="card-body">
                         <img src="${badge.icon}" alt="${badge.title} Icon" class="badge-icon mb-3">
                         <h5 class="card-title">${badge.title}</h5>
@@ -196,16 +162,48 @@ function displayBadges(badgeArray) {
                 </div>
             </div>
         `;
-        // Play sound when achievement is unlocked
-        if (badge.progress === 100) {
+
+        // Play animation if badge is unlocked
+        if (isUnlocked) {
             setTimeout(() => {
                 playSound('unlock-sound');
-            }, 500);  // Delay to sync with animation
+                const cardElement = document.getElementById(`card-${index}`);
+                playUnlockAnimation(cardElement);
+            }, 500);
         }
     });
 
     badgeGrid.innerHTML = badgeCards;
 }
+
+// Track Site Visits
+function trackVisits() {
+    let visits = localStorage.getItem('siteVisits') || 0;
+    visits++;
+    localStorage.setItem('siteVisits', visits);
+
+    // Unlock badge for 5 visits
+    if (visits === 5) {
+        badges[0].progress = 100;
+        saveProgress();
+        displayBadges(badges);
+    }
+}
+
+// Track Button Clicks
+let clickCount = 0;
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('btn')) {
+        clickCount++;
+        
+        // Unlock badge for 10 clicks
+        if (clickCount === 10) {
+            badges[1].progress = 100;
+            saveProgress();
+            displayBadges(badges);
+        }
+    }
+});
 
 // Dark Mode Toggle
 function toggleDarkMode() {
@@ -300,16 +298,25 @@ function showTutorial() {
 }
 
 // Load saved theme on page load
+// window.onload = () => {
+//     loadProgress();
+//     displayBadges(badges);
+//     filterBadges();
+//     const savedTheme = localStorage.getItem('theme');
+//     if (savedTheme === 'dark') {
+//         document.body.classList.add('dark-mode');
+//         document.getElementById('dark-mode-toggle').checked = true;
+//     }
+//     calculateProgress();
+//     showTutorial();
+// }
 window.onload = () => {
     loadProgress();
+    trackVisits();
     displayBadges(badges);
     filterBadges();
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.getElementById('dark-mode-toggle').checked = true;
-    }
     calculateProgress();
     showTutorial();
 }
+// Commented out
 
