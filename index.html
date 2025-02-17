@@ -11,15 +11,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="text-center py-4">
+    <!-- Dark Mode Toggle Button -->
+    <button class="btn btn-dark mode-toggle" onclick="toggleDarkMode()">🌙</button>
+
+    <!-- Header Section -->
+    <div class="container text-center my-4">
+        <h1>Achievement Badges</h1>
+        <p>Showcasing milestones and rewards</p>
+    </div>
+
+    <!-- <header class="text-center py-4">
         <h1>Achievement Badges</h1>
         <p>Showcasing milestones and rewards</p>
 
         <div class="text-end mb-4">
             <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode()">
             <label for="dark-mode-toggle">Dark Mode</label>
-        </div>        
-    </header>
+        </div>
+    </header> -->
 
     <main class="container">
         <div class="row mb-4 g-3">
@@ -45,17 +54,24 @@
             </div>
         </div>
 
-        <div class="progress-dashboard text-center my-4">
-            <h2>Achievement Progress</h2>
-            <div class="progress-overview">
-                <div class="total-badges">
+        <div class="progress-dashboard  my-4">
+            <div class="text-center">
+                <h4>Achievement Progress</h4>
+                <span class="fw-medium">Total Badges: <span class="fw-bold" id="total-badges">0</span></span> |
+                <span class="fw-medium">Completed Badges: <span class="fw-bold" id="completed-badges">0</span></span>
+            </div>
+            <!-- <h4>Achievement Progress</h4> -->
+            <!-- <div class="progress-overview"> -->
+                
+                <!-- <div class="total-badges">
                     <h4>Total Badges: <span id="total-badges">0</span></h4>
                 </div>
                 <div class="completed-badges">
                     <h4>Completed Badges: <span id="completed-badges">0</span></h4>
-                </div>
-                <div class="overall-progress">
+                </div> -->
+                <!-- <div class="overall-progress">
                     <h4>Overall Progress</h4>
+                    <span class="d-block fw-semibold">Overall Progres</span>
                     <div class="progress">
                         <div class="progress-bar bg-success" role="progressbar" 
                             id="overall-progress-bar" style="width: 0%;" 
@@ -64,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>        
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4" id="badge-grid">

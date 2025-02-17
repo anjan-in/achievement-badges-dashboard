@@ -21,6 +21,16 @@ body.dark-mode .form-control {
     color: #cfcfcf;
     border: none;
 }
+.mode-toggle {
+    font-size: 1.75em;
+    padding: 4px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
 
 .achievement-card {
     border: none;
@@ -82,7 +92,7 @@ body.dark-mode .form-control {
 }
 /* Progress Dashboard Styles */
 .progress-dashboard {
-    /* background-color: #f4f6f8; */
+    background-color: #fffcfc;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
